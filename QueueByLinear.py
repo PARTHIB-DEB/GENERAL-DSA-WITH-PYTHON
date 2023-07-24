@@ -14,9 +14,13 @@ class MyQueue:
         self.__Queue = []
         self.__totalsize = totalsize
 
-    # def Queue_filled_unfilled(self) -> int:
-    #     if self.__front > -1:
-    #         print(f"FILLED : {self}")
+    def Queue_filled_unfilled(self) -> int:
+        if self.__end > -1:
+            filled = self.__end
+        else:
+            filled = self.__end +1
+        print(f"\n\t\t FILLED : {filled} AND UNFILLED : {self.__totalsize - filled}")
+        
     
 
     def insertion(self) -> None:
@@ -50,8 +54,8 @@ while (True):
     Queue_Obj.display()
     op = int(input("\n\tOPERATION:"))
     match op:
-        # case 1:
-        #     Queue_Obj.Queue_filled_unfilled()
+        case 1:
+            Queue_Obj.Queue_filled_unfilled()
 
         case 2:
             Queue_Obj.insertion()
