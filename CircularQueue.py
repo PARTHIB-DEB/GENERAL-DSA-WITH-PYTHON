@@ -9,7 +9,7 @@ Operarions : 1) Manipulative : Insertion ,  Deletion
 
 class MyQueue:
     def __init__(self, totalsize) -> None:
-        self.__front = -1 # Its constant , because actual deletion is happening here, no need to increment
+        self.__front = -1 # Its constant here also , just increment it to 0
         self.__end = -1
         self.__Queue = []
         self.__totalsize = totalsize+1
