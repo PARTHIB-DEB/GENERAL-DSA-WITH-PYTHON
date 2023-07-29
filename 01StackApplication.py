@@ -3,39 +3,30 @@
 # We will consider some signs and do the mathematical operations according to them
 
 # Example : 5 * (4 + (18-2)/4) - 10
+
 class Solve_Maths:
     def __init__(self, string) -> None:
         self.string = string
     
-    @classmethod
-    def operations(self, num1, operand, num2):
+    def __operations(self, num1, operand, num2):
         if operand == "+":
-            return (int(num1) + int(num2))
+            result = num1 + num2
         elif operand == "-":
-            return (int(num1) - int(num2))
+            result = num1 - num2
         elif operand == "*":
-            return (int(num1) * int(num2))
+            result = num1 * num2
         else:
-            return (int(num1) / int(num2))
-    
-    stack=[]
-    flag=1
+            result = num1 / num2
+        return result
+
     def push_pop_solve(self):
-        for i in self.string:
-            if i == ')':
-                print(self.stack)
-                num2,operand,num1 = self.stack.pop(),self.stack.pop(),self.stack.pop()
-                result=self.operations(num1=num1,operand=operand,num2=num2)
-                self.stack.append(result)
-                self.flag=0
-            else:
-                if i != '(':
-                    self.stack.append(i)
-        # return self.stack
+        stack = []
+        i = 0
+        
+        return stack[0]
 
-
-Obj=Solve_Maths("5*(4+(18-2)/4)-10")
-print(f"The result is : {Obj.push_pop_solve()}")
+Obj = Solve_Maths("5*(4+(18-2)/4)-10")
+print(f"The result is: {Obj.push_pop_solve()}")
 
 
     

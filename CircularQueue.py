@@ -1,5 +1,5 @@
-# This file represents a basic definition of a Linear - Queue and some operations related to it
-# Linear-Queue is a linear data structure , means having continuous memory allocation of elements inside a block
+# This file represents a basic definition of a Circular - Queue and some operations related to it
+# Circular-Queue is an upgradation of linear-queue to reuse the deleted/unfilled space without the static boundary of size of the array(list here)
 # Here I am using List as the container
 '''
 Operarions : 1) Manipulative : Insertion ,  Deletion
@@ -9,38 +9,40 @@ Operarions : 1) Manipulative : Insertion ,  Deletion
 
 class MyQueue:
     def __init__(self, totalsize) -> None:
-        self.__front = 0 # Its constant , because actual deletion is happening here, no need to increment
+        self.__front = -1 # Its constant , because actual deletion is happening here, no need to increment
         self.__end = -1
         self.__Queue = []
-        self.__totalsize = totalsize
+        self.__totalsize = totalsize+1
 
     def Queue_filled_unfilled(self) -> int:
         if self.__end > -1:
             filled = self.__end
+            print(f"\n\t\t FILLED : {filled} AND UNFILLED : {self.__totalsize - filled-1}")
         else:
-            filled = self.__end +1
-        print(f"\n\t\t FILLED : {filled} AND UNFILLED : {self.__totalsize - filled}")
+            print("\n\t\tCOMPLETELY NULL QUEUE")
+        pass
         
     
 
     def enqueue(self) -> None:
-        if self.__end == -1:
+        if self.__end == -1 and self.__front==-1:
             self.__end = 0
-        if self.__end == self.__totalsize :
+            self.__front = 0
+        if (self.__end+1)%self.__totalsize == self.__front :
             print("\n\t\tQUEUE IS FULL , NOTHING TO INSERT")
         else:
+            self.__end=(self.__end+1)%self.__totalsize
             data=int(input("\n\t\t ENTER DATA :"))
             self.__Queue.insert(self.__end,data)
             print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
-            self.__end=self.__end+1
         
     def dequeue(self) -> None: # Here as actual deletion is happening , so No need to increment 'front'
-        try:
+        if self.__end==self.__front:
+            self.__end=0
+        else:
             data=self.__Queue[self.__front]
-            print(f"\n\t\t VALUE : {data} IS DELETED FROM {self.__front}")
             self.__Queue.remove(data)
-        except Exception:
-            print("\n\t\t ALL ELEMENTS ARE DELETED")
+            self.__end=self.__end-1
         
 
     def display(self) -> None: # As front marker is constant , so it will print automatically print empty / filled queue
@@ -50,7 +52,6 @@ Queue_Obj = MyQueue(int(input("\n\t QUEUE SIZE:")))
 while (True):
     print("\n")
     print("\t\t1 TO STATE OF QUEUE \n\t\t 2 TO INSERT_VALUE \t\t 3 TO DELETE_VALUE")
-    print("\n")
     Queue_Obj.display()
     op = int(input("\n\tOPERATION:"))
     match op:
