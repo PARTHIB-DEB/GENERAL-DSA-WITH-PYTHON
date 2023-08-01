@@ -70,7 +70,7 @@ class MyQueue:
 Queue_Obj = MyQueue(int(input("\n\t QUEUE SIZE:")))
 while (True):
     print("\n")
-    print("\t\t1 TO STATE OF QUEUE \n\t\tPRESS 2 OR 3 OTHERTHAN 3")
+    print("\t\t1 TO STATE OF QUEUE \n\t\tPRESS 2 OR 3 OTHERTHAN 1")
     print("\n")
     Queue_Obj.display()
     op = int(input("\n\tOPERATION:"))
