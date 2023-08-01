@@ -31,10 +31,10 @@ class MyQueue:
         if (self.__end+1)%self.__totalsize == self.__front :
             print("\n\t\tQUEUE IS FULL , NOTHING TO INSERT")
         else:
-            self.__end=(self.__end+1)%self.__totalsize
             data=int(input("\n\t\t ENTER DATA :"))
             self.__Queue.insert(self.__end,data)
             print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
+            self.__end=(self.__end+1)%self.__totalsize
         
     def dequeue(self) -> None: # Here as actual deletion is happening , so No need to increment 'front'
         if self.__end==self.__front:
