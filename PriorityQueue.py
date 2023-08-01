@@ -1,5 +1,6 @@
-# This file represents a basic definition of a Linear - Queue and some operations related to it
-# Linear-Queue is a linear data structure , means having continuous memory allocation of elements inside a block
+# This file represents a basic definition of a Priority-Queue and some operations related to it
+# Linear-Queue is a linear data structure , but like DEqueue , it also does not follow FIFO rule.
+# Here Items are placed according to their priority
 # Here I am using List as the container
 '''
 Operarions : 1) Manipulative : Insertion ,  Deletion
@@ -13,6 +14,7 @@ class MyQueue:
         self.__end = -1
         self.__Queue = []
         self.__totalsize = totalsize
+        self.__priority=0
 
     def Queue_filled_unfilled(self) -> int:
         if self.__end > -1:
@@ -30,9 +32,13 @@ class MyQueue:
             print("\n\t\tQUEUE IS FULL , NOTHING TO INSERT")
         else:
             data=int(input("\n\t\t ENTER DATA :"))
-            self.__Queue.insert(self.__end,data)
-            print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
-            self.__end=self.__end+1
+            pr=int(input("\n\t\tENTER PRIORITY:"))
+            
+            if pr >= self.__priority: # PLACING PRIORITY WISE INTERNAL SORTING
+                print(f"\n\t\t NOW PRIORITY IS GREATER THAN PREVIOUS :{self.__priority}")
+                self.__Queue.insert(pr,data)
+                print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
+                self.__end=self.__end+1
         
     def dequeue(self) -> None: # Here as actual deletion is happening , so No need to increment 'front'
         try:
