@@ -36,7 +36,7 @@ class MyQueue:
             print(f"\n\t\tNOW MAX PRIORITY:{self.__max_priority}")
             if pr >= self.__max_priority: # PLACING PRIORITY WISE INTERNAL SORTING
                 self.__max_priority=pr
-                self.__Queue.insert(pr,data)
+                self.__Queue.insert(self.__end,data)
                 print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
                 self.__end=self.__end+1
             else:
@@ -54,7 +54,8 @@ class MyQueue:
         
 
     def display(self) -> None: # As front marker is constant , so it will print automatically print empty / filled queue
-        print(f"\n\t\tQUEUE : {self.__Queue}")
+        for i in range(len(self.__Queue)):
+            print(f"\n\t\tQUEUE[{i}]={self.__Queue[i]}")
 
 Queue_Obj = MyQueue(int(input("\n\t QUEUE SIZE:")))
 while (True):
