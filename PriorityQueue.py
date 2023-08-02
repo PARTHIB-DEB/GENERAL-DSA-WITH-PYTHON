@@ -14,7 +14,7 @@ class MyQueue:
         self.__end = -1
         self.__Queue = []
         self.__totalsize = totalsize
-        self.__priority=0
+        self.__max_priority=0
 
     def Queue_filled_unfilled(self) -> int:
         if self.__end > -1:
@@ -33,10 +33,14 @@ class MyQueue:
         else:
             data=int(input("\n\t\t ENTER DATA :"))
             pr=int(input("\n\t\tENTER PRIORITY:"))
-            
-            if pr >= self.__priority: # PLACING PRIORITY WISE INTERNAL SORTING
-                print(f"\n\t\t NOW PRIORITY IS GREATER THAN PREVIOUS :{self.__priority}")
+            print(f"\n\t\tNOW MAX PRIORITY:{self.__max_priority}")
+            if pr >= self.__max_priority: # PLACING PRIORITY WISE INTERNAL SORTING
+                self.__max_priority=pr
                 self.__Queue.insert(pr,data)
+                print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
+                self.__end=self.__end+1
+            else:
+                self.__Queue.insert(self.__front,data)
                 print(f"\n\t\t{data} IS INSERTED SUCCESSFULLY!!")
                 self.__end=self.__end+1
         
