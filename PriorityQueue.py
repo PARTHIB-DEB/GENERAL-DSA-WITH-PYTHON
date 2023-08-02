@@ -1,5 +1,5 @@
 # This file represents a basic definition of a Priority-Queue and some operations related to it
-# Linear-Queue is a linear data structure , but like DEqueue , it also does not follow FIFO rule.
+# Priority-Queue is a linear data structure , but like DEqueue , it also does not follow FIFO rule.
 # Here Items are placed according to their priority
 # Here I am using List as the container
 '''
