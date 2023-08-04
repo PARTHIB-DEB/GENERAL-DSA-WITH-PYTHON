@@ -41,7 +41,7 @@ class SingleLinkedList:
             del first_node
             self.__listsize -=1
         else:
-            print("\n\t\t NOTHING TO DELETE")
+            print("\n\t\t NOTHING TO DELETE\n\n")
         
     
     def displayList(self):
@@ -57,7 +57,8 @@ class SingleLinkedList:
 
 Obj_List=SingleLinkedList()
 while(True):
-    print("\t\t1 TO INSERT NODE \n\t\t 2 TO DELETE NODE")
+    print("\n\t\t1 TO INSERT NODE \n\t\t 2 TO DELETE NODE")
+    print("\n")
     Obj_List.displayList()
     op = int(input("\n\n\tOPERATION:"))
     match op:

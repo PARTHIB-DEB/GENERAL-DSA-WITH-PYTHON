@@ -44,8 +44,8 @@ class SingleLinkedList:
         else:
             newnode = self.__NodeCreation()
             n1 = int(input("\n\t\tENTER THE PRECEDING NODE:"))
-            searchnode = self.__head
-            if 0 < n1 <= self.__size:
+            if 1 <= n1 <= self.__size:
+                searchnode = self.__head
                 for i in range(1, self.__size+1):
                     if i == n1:
                         break
@@ -57,25 +57,32 @@ class SingleLinkedList:
             else:
                 print(f"\n\t\tGIVE A VALID NODE NUMBER")
     
-    def DeleteSpecificNode(self): # Not Proper !!
+    def DeleteSpecificNode(self): # Not Proper !! Example of 2-marker In a SLL (Hint of Double LL)
         if self.__size==0:
             print("\n\t\tNOTHING TO DELETE")
         else:
             loc=int(input("\n\t\tNODE NO/LOCATION:"))
             if 1<=loc<=self.__size:
-                searchnode=self.__head
-                prev_search_node=self.__head._Next
-                for i in range(1, self.__size+1):
-                    if i == loc:
-                        break
-                    else:
-                        prev_search_node=searchnode
-                        searchnode = searchnode._Next
-                print(f"\n\t\t NODE OF VAL {searchnode._Value} AND LOC {loc} IS DELETED")
-                prev_search_node._Next=searchnode._Next
-                searchnode._Next=None
-                del searchnode
-                self.__size-=1
+                if loc == 1:
+                    del_node=self.__head
+                    self.__head=del_node._Next
+                    del_node._Next=None
+                    print(f"\n\t\tNODE OF VALUE: {del_node._Value} IS DELETED")
+                    del del_node
+                    self.__size-=1
+                else:
+                    del_node=self.__head
+                    for i in range(1,self.__size+1):
+                        if i == loc:
+                            break
+                        else:
+                            prev=del_node # Creating Another Marker
+                            del_node=del_node._Next # Actual Node Marker
+                    prev._Next=del_node._Next 
+                    del_node._Next=None
+                    print(f"\n\t\tNODE OF VALUE: {del_node._Value} IS DELETED")
+                    del del_node
+                    self.__size-=1
             else:
                 print(f"\n\t\tGIVE A VALID NODE NUMBER")
                 
