@@ -3,6 +3,7 @@
 1) Insertion Before First Node
 2) Insertion in between two Nodes
 3) Insertion Before any location/Node (We have to declare external two markers to point the previous node, in short it is tending to be easy in Double LinkedList)
+4) Delete A specific Node (means a Node In specific Location)
 '''
 
 
@@ -55,6 +56,28 @@ class SingleLinkedList:
                 self.__size += 1
             else:
                 print(f"\n\t\tGIVE A VALID NODE NUMBER")
+    
+    def DeleteSpecificNode(self):
+        if self.__size==0:
+            print("\n\t\tNOTHING TO DELETE")
+        else:
+            loc=int(input("\n\t\tNODE NO/LOCATION:"))
+            if 1<=loc<=self.__size:
+                searchnode=self.__head
+                prev_search_node=self.__head._Next
+                for i in range(1, self.__size+1):
+                    if i == loc:
+                        break
+                    else:
+                        prev_search_node=searchnode
+                        searchnode = searchnode._Next
+                print(f"\n\t\t NODE OF VAL {searchnode._Value} AND LOC {loc} IS DELETED")
+                prev_search_node._Next=searchnode._Next
+                searchnode._Next=None
+                del searchnode
+                self.__size-=1
+            else:
+                print(f"\n\t\tGIVE A VALID NODE NUMBER")
                 
                 
     def displayList(self) -> None:
@@ -71,7 +94,7 @@ class SingleLinkedList:
 
 Obj_List = SingleLinkedList()
 while (True):
-    print("\n\t\t1 TO INSERT NEW NODE BEFORE A NODE \t\t 2 TO INSERT A NODE IN BETWEEN")
+    print("\n\t\t1 TO INSERT NEW NODE BEFORE A NODE \t\t 2 TO INSERT A NODE IN BETWEEN \n\t\t 3 TO DELETE A SPECIFIC NODE")
     Obj_List.displayList()
     op = int(input("\n\n\tOPERATION:"))
     match op:
@@ -80,6 +103,9 @@ while (True):
 
         case 2:
             Obj_List.InsertionBetweenNode()
+        
+        case 3:
+            Obj_List.DeleteSpecificNode()
 
         case _:
             print("\n\n\t\tNO OPERATIONS MATCHED")
