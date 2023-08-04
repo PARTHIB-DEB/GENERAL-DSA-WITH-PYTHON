@@ -57,7 +57,7 @@ class SingleLinkedList:
             else:
                 print(f"\n\t\tGIVE A VALID NODE NUMBER")
     
-    def DeleteSpecificNode(self):
+    def DeleteSpecificNode(self): # Not Proper !!
         if self.__size==0:
             print("\n\t\tNOTHING TO DELETE")
         else:
