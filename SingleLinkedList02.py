@@ -1,88 +1,86 @@
 # This file represents Single Linked List dat structure with some other special ADDITION OF NODES only operations
 '''
-1) Addition Before a Node
-2) Addition in between two Nodes
-3) Addition Before a location
-4) Addition after a location
+1) Insertion Before First Node
+2) Insertion in between two Nodes
+3) Insertion Before any location/Node (We have to declare external two markers to point the previous node, in short it is tending to be easy in Double LinkedList)
 '''
 
-# This is another Way Of creating any Linkedlist, Here We have taken the Value of Head_Node from Out of the Class, and have not taken the help of list_size
-# In short , this is the most common approach of creating a linkedlist in any language
-class Node:
-    def __init__(self) -> None: # Class for Any Node Creation
-        self._Value=None
-        self._Next=None
-    
-class SingleLinkedList:
-    def __init__(self,Head) -> None:
-        self.__head=Head
-    
-    def firstNodeCreation(self,data) ->Node:
-        newnode=Node()
-        newnode._Value=data
-        return newnode
-    
-    def InsertionBeforeNode(self,data)->None:
-        if self.__head is None:
-            value=data
-            print(f"\n\t\tFIRST NODE CREATED")
-            self.__head = self.firstNodeCreation(value)
-        else:
-            newnode=Node()
-            newnode._Value=data
-            newnode._Next=self.__head
-            self.__head=newnode
-            
-    def InsertionBetweenNode(self,data,n1)->None:
-        count=0
-        if self.__head is None:
-            value=data
-            print(f"\n\t\tFIRST NODE CREATED")
-            self.__head = self.firstNodeCreation(value)
-        else:
-            newnode=Node()
-            newnode._Value=data
-            searchnode=self.__head
-            while searchnode._Next is not None:
-                count += 1
-                if count == n1:
-                    break
-                else:
-                    searchnode=searchnode._Next
-            newnode._Next=searchnode._Next
-            searchnode._Next=newnode
-            
-                
-        
-    
-    def displayList(self) -> None:
-        search_node=self.__head
-        print("\n\t\tLINKED-LIST:",end="\t")
-        while(search_node._Next!= None):
-            print(f"{search_node._Value}-->",end="\t")
-            search_node=search_node._Next
-        print("Null")
 
-Head_Node=Node()
-Head_Node._Value=None
-Obj_List=SingleLinkedList(Head_Node)
-while(True):
+class Node:
+    def __init__(self) -> None:  # Class for Any Node Creation
+        self._Value = None
+        self._Next = None
+
+
+class SingleLinkedList:
+    def __init__(self) -> None:
+        self.__head = Node()
+        self.__size = 0
+
+    def __NodeCreation(self) -> Node:
+        newnode = Node()
+        data = int(input("\n\t\tENTER DATA OF NODE:"))
+        newnode._Value = data
+        newnode._Next = None
+        return newnode
+
+    def InsertionBeforeFirstNode(self) -> None:
+        if self.__size == 0:
+            self.__head = self.__NodeCreation()
+            print("\n\t\tFIRST NODE CREATED")
+            self.__size += 1
+        else:
+            newnode = self.__NodeCreation()
+            newnode._Next = self.__head
+            self.__head = newnode
+            self.__size += 1
+
+    def InsertionBetweenNode(self) -> None:
+        if self.__size == 0:
+            self.__head = self.__NodeCreation()
+            print("\n\t\tFIRST NODE CREATED")
+            self.__size += 1
+        else:
+            newnode = self.__NodeCreation()
+            n1 = int(input("\n\t\tENTER THE PRECEDING NODE:"))
+            searchnode = self.__head
+            if 0 < n1 <= self.__size:
+                for i in range(1, self.__size+1):
+                    if i == n1:
+                        break
+                    else:
+                        searchnode = searchnode._Next
+                newnode._Next = searchnode._Next
+                searchnode._Next = newnode
+                self.__size += 1
+            else:
+                print(f"\n\t\tGIVE A VALID NODE NUMBER")
+                
+                
+    def displayList(self) -> None:
+        search_node = self.__head
+        print("\n\t\tLINKED-LIST:", end="\t")
+        if self.__size == 0:
+            print("Null")
+        else:
+            while (search_node != None):
+                print(f"{search_node._Value}-->", end="\t")
+                search_node = search_node._Next
+            print("Null")
+
+
+Obj_List = SingleLinkedList()
+while (True):
     print("\n\t\t1 TO INSERT NEW NODE BEFORE A NODE \t\t 2 TO INSERT A NODE IN BETWEEN")
     Obj_List.displayList()
     op = int(input("\n\n\tOPERATION:"))
     match op:
         case 1:
-            Obj_List.InsertionBeforeNode(int(input("\n\t\tENTER NEW NODE'S VALUE:")))
-            print("\n")
-            
+            Obj_List.InsertionBeforeFirstNode()
+
         case 2:
-            Obj_List.InsertionBetweenNode(int(input("\n\t\tENTER NEW NODE'S VALUE:")),int(input("\n\t\tENTER FIRST NODE:")))
-            print("\n")
-            
+            Obj_List.InsertionBetweenNode()
+
         case _:
             print("\n\n\t\tNO OPERATIONS MATCHED")
             break
-
-    
-    
-        
