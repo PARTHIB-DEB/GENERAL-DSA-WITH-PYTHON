@@ -19,7 +19,7 @@ class BubbleSort:
             for j in range(arr_len-i-1): #rotations
                 if self.arr[j]>self.arr[j+1]:
                     self.arr[j],self.arr[j+1]=self.arr[j+1],self.arr[j]
-                print(f"\n\t\tARR:{self.arr}")
+                # print(f"\n\t\tARR:{self.arr}")
         print(f"\n\t\tAFTER SORTING,ARR:{self.arr}")
 
 
