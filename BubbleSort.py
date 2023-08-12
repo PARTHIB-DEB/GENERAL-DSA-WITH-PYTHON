@@ -15,10 +15,11 @@ class BubbleSort:
     
     def Sort_arr(self)->None:
         arr_len=self.length
-        for i in range(arr_len-1):
-            for j in range(arr_len-i-1):
+        for i in range(arr_len-1): #Passes
+            for j in range(arr_len-i-1): #rotations
                 if self.arr[j]>self.arr[j+1]:
                     self.arr[j],self.arr[j+1]=self.arr[j+1],self.arr[j]
+                print(f"\n\t\tARR:{self.arr}")
         print(f"\n\t\tAFTER SORTING,ARR:{self.arr}")
 
 
