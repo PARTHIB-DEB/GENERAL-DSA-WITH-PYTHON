@@ -1,4 +1,4 @@
-# This File Contains about How to do Bubble Sort imn Python
+# This File Contains about How to do Insertion Sort imn Python
 # After Bubble Sort, Insertion sort is the most similar , yet a little runtime taker
 # Here as a mutable array we will take list DS
 
