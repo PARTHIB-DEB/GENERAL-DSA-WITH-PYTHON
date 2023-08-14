@@ -88,11 +88,11 @@ class SingleLinkedList:
                 
                 
     def displayList(self) -> None:
-        search_node = self.__head
-        print("\n\t\tLINKED-LIST:", end="\t")
         if self.__size == 0:
-            print("Null")
+            print("\n\t\t NOTHING TO SHOW")
         else:
+            search_node = self.__head
+            print("\n\t\tLINKED-LIST:", end="\t")
             while (search_node != None):
                 print(f"{search_node._Value}-->", end="\t")
                 search_node = search_node._Next
