@@ -1,5 +1,5 @@
 # This File Contains about How to do Merge Sort in Python
-# Part from Bubble,Insertion,selection sort, Merge sort is very less runtime taker because it applies divide and conquer algorithm
+# APart from Bubble,Insertion,selection sort, Merge sort is very less runtime taker because it applies divide and conquer algorithm
 # Here as a mutable array we will take list DS
 
 '''
@@ -10,7 +10,7 @@ Rules:
 4) After sorting, choose each elemnts from both subarrays , compare them , and put them in a 3rd array in correct order
 '''
 
-class InsertionSort:
+class MergeSort:
     def __init__(self,length) -> None:
         self.length=length
         self.arr=[]
