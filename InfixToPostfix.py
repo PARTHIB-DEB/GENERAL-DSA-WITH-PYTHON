@@ -12,58 +12,50 @@ Rules:
 '''
 class InfixToPostfix:
     def __init__(self, infix) -> None:
-        self.operandlist = "^*/+-"
-        self.infix = infix
+        self.operandlist = ["^","*","/","+","-"]
+        self.infix = list(infix)
         self.stack = []
         self.postfix = ""
 
-    def precedence(self, item) -> int:
-        if item == '^':
+    def precedence(self, item) -> int: # Precedence Checker Function
+        if item == "^":
             return 3
         elif item == "*" or item == "/":
             return 2
         elif item == "+" or item == "-":
             return 1
         else:
-            return 0
+            return 0      
 
     def conversion(self):
-        self.stack.append("(")
-        self.infix += ")"
+        self.stack.insert(0,"(") #It says that now we can operate the equation from start
+        self.infix.append(")") # It says that Our operations has ended
         i = 0
-        infix_elm = self.infix[i]
-        while (i<=len(self.infix)-1):
-            if infix_elm == "(":
-                self.stack.append(self.infix[i])
-                
-            elif infix_elm not in self.operandlist:
-                self.postfix += self.infix[i]
-                
-            elif infix_elm in self.operandlist:
-                item = self.stack.pop()
-                while (item in self.operandlist and self.precedence(item) >= self.precedence(infix_elm)):
-                    self.postfix += item
-                    item = self.stack.pop()
+        while(i<len(self.infix)):
+            item=self.infix[i]
+            if item=="(":
                 self.stack.append(item)
-                self.stack.append(infix_elm)
                 
-            elif infix_elm == ")":
-                item = self.stack.pop()
-                while (item != "("):
-                    self.postfix += item
-                    item = self.stack.pop()
-                    
-            else:
-                print("\n\t\tINVALID EXPRESSION")
-                break
-            infix_elm = self.infix[i]
+            elif str(item).isalnum():
+                self.postfix+=str(item)
+                
+            elif item in self.operandlist:
+                x=self.stack.pop()
+                while x in self.operandlist and self.precedence(x)>=self.precedence(item): # Checking Precedence of stack(top) and new-elem
+                    self.postfix+=x
+                    x=self.stack.pop()
+                self.stack.append(x)
+                self.stack.append(item)
+                
+            elif item==")": # If we see the ending bracket , then repeatedly just put stack elems in postfix expr
+                x=self.stack.pop()
+                while x != "(":
+                    self.postfix+=x
+                    x=self.stack.pop()
             i+=1
-        while(len(self.stack)>0):
-            item = self.stack.pop()
-            self.postfix+=item
         return self.postfix
 
 expression = "A+(B-(C/D)*E)-F"
 converter = InfixToPostfix(expression)
 postfix_result = converter.conversion()
-print(postfix_result)
+print("\n\t\t%s IN POSTFIX : %s\n" %(expression,postfix_result))
