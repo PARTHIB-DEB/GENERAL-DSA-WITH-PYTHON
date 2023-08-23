@@ -52,6 +52,9 @@ class InfixToPostfix:
                 while x != "(":
                     self.postfix+=x
                     x=self.stack.pop()
+            else:
+                print("\n\t\tINVALID INFIX EXPRESSION\n")
+                break
             i+=1
         return self.postfix
 
