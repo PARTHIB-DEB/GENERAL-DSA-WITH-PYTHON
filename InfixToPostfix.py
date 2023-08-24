@@ -1,6 +1,6 @@
 # It's an application of stack which means we have to do the conversion using stack
 '''
-Functions --> isdigit , isoperator , push , pop (Some of here are built-in) , precedence
+Functions --> isalphanumeric , isoperator , push , pop (Some of here are built-in) , precedence
 Rules:
     1) Create a stack (list) : Purpose of stack is to fill operands in it after putting first "(" in it and pop if found any ")" in the expr
     2) Create a postfix (string or list) : If expr(item) is not operand , straight fill it in postfix , if it is , follow the below rules
