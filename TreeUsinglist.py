@@ -7,7 +7,7 @@ while Creating TREE using array ,  we have to remind that:
 class TreeByList:
     def __init__(self,size) -> None:
         '''
-            1) Make the current index root
+            1) Fill value in the root index
             2) Give choice to user that either 1 or 2 as how many child index it have empty
             3) If user have filled one child , ask again if he/she want to fill another one or not
             else
@@ -17,19 +17,84 @@ class TreeByList:
         self.root=0
         self.treelist=[None]
     
+    
+    def display(self):
+        for i in range(len(self.treelist)):
+            if str(self.treelist[i]).isdigit():
+                print(f"\n\t\tARR[{i}]:{self.treelist[i]}")
+            else:
+                print("\n\n\t\tNone",end="\t")
+        print("\n")
+            
+    
+    
     def fill_tree(self) -> None:
-        value=int(input("\n\t\t Node's Value:"))
-        self.treelist[self.root]=value
-        child_node_list=[self.root*2+1,self.root*2+2]
-        print("\n\t\tPRESS 1 FOR LEFT_CHILD \t\t 2 FOR RIGHT_CHILD\n")
-        child_choice=int(input("\n\t\tWHICH CHILD:"))
-        match(child_choice):
-            case 1:
-                self.root=child_node_list[0]
-                print("LEFT CHILD IS NEW ROOT NODE")
-            case 2:
-                self.root=child_node_list[1]
-                print("RIGHT CHILD IS NEW ROOT NODE")
-            case _:
-                print("\n\t\t SETING LEFT CHILD AS DEFAULT\n")
+        while(len(self.treelist)<=self.size):
+            self.display()
+            value=int(input("\n\t\t Node's Value:"))
+            if self.root == 0:
+                self.treelist.insert(self.root,value)
+                child_choice=int(input("\n\t\tWHICH CHILD IS NEW ROOT:"))
+                if child_choice == 1:
+                    self.root=2*self.root + 1
+                    if self.root <= self.size -1 :
+                        if str(self.treelist[self.root]).isdigit():
+                            print("\n\n\t\tNODE IS FILLED ALREADY")
+                            continue
+                        else:
+                            in_hand_node=self.root+1
+                            continue
+                    else:
+                        print("\n\n\t\t OUT OF LIST")
+                        continue
+                elif child_choice == 2 :
+                    self.root=2*self.root + 2
+                    if self.root <= self.size -1 :
+                        if str(self.treelist[self.root]).isdigit():
+                            print("\n\n\t\tNODE IS FILLED ALREADY")
+                            continue
+                        else:
+                            in_hand_node=self.root-1
+                            continue
+                    else:
+                        print("\n\n\t\t OUT OF LIST")
+                        continue  
+            else:
+                print("\n\t\tPRESS 1 FOR PREVIOUS NODE \t\t 2 FOR NEW CHILD NODE")
+                match(int(input("\n\t\t PREVIOUS OR NEW ROOT:"))):
+                    case 1:
+                        self.treelist.insert(in_hand_node,value)
+                    case 2:
+                        child_choice=int(input("\n\t\tWHICH CHILD IS NEW ROOT:"))
+                        if child_choice == 1:
+                            try:
+                                self.root=2*self.root + 1
+                                if self.root <= self.size -1 :
+                                    if str(self.treelist[self.root]).isdigit():
+                                        print("\n\n\t\tNODE IS FILLED ALREADY")
+                                        continue
+                                    else:
+                                        in_hand_node=self.root+1
+                                        continue
+                            except Exception:
+                                print("\n\n\t\t OUT OF LIST")
+                                continue
+                        elif child_choice == 2 :
+                            try:
+                                self.root=2*self.root + 2
+                                if self.root <= self.size -1 :
+                                    if str(self.treelist[self.root]).isdigit():
+                                        print("\n\n\t\tNODE IS FILLED ALREADY")
+                                        continue
+                                    else:
+                                        in_hand_node=self.root-1
+                                    continue
+                            except Exception:
+                                print("\n\n\t\t OUT OF LIST")
+                                continue         
+                            
+
+obj=TreeByList(5)
+obj.fill_tree()
+                
 
