@@ -19,19 +19,18 @@ class TreeByList:
         self.treelist.insert(self.root,root_val)
     
     
-    def display(self):
-        for i in range(len(self.treelist)):
-            if str(self.treelist[i]).isdigit():
-                print(f"\n\t\tARR[{i}]:{self.treelist[i]}")
-            else:
-                print("\n\n\t\tNone",end="\t")
-        print("\n")
-            
+    # def display(self):
+    #     for i in range(len(self.treelist)):
+    #         if str(self.treelist[i]).isdigit():
+    #             print(f"\n\t\tARR[{i}]:{self.treelist[i]}")
+    #         else:
+    #             print("\n\n\t\tNone",end="\t")
+    #     print("\n")     
     
     
     def fill_tree(self) -> None:
         while(self.root<=self.size-1):
-            # self.display()
+            print(f"\n\t\tTREE:{self.treelist}")
             print("\n\n\t\t 1 TO CHOOSE LEFT CHILD \t\t 2 TO CHOOSE RIGHT CHILD\n")
             choice=int(input("\n\t\t WHICH CHID IS NEXT ROOT:"))
             if choice == 1:
@@ -39,6 +38,7 @@ class TreeByList:
                 try:
                     print(f"\n\t\tNOW ROOT AT {left_child} , LEFT CHILD OF {self.root}")
                     self.root=left_child
+                    self.treelist.insert(self.root,int(input(f"\n\t\t VALUE OF NODE AT {self.root} :")))
                 except Exception:
                     print(f"\n\t\tBREAKING AT INDEX {self.root}")
                     break
@@ -47,6 +47,7 @@ class TreeByList:
                 try:
                     print(f"\n\t\tNOW ROOT AT {right_child} , LEFT CHILD OF {self.root}")
                     self.root=right_child
+                    self.treelist.insert(self.root,int(input(f"\n\t\t VALUE OF NODE AT {self.root} :")))
                 except Exception:
                     print(f"\n\t\tBREAKING AT INDEX {self.root}")
                     break
