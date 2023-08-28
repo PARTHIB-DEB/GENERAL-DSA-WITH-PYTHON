@@ -15,51 +15,39 @@ class TreeByList:
         '''
         self.size=size
         self.root=0
-        self.treelist=[]
-        self.treelist.insert(self.root,root_val)
+        self.treelist={}
+        self.treelist[self.root]=root_val
     
     
-    # def display(self):
-    #     for i in range(len(self.treelist)):
-    #         if str(self.treelist[i]).isdigit():
-    #             print(f"\n\t\tARR[{i}]:{self.treelist[i]}")
-    #         else:
-    #             print("\n\n\t\tNone",end="\t")
-    #     print("\n")     
+    def display(self):
+        for i in self.treelist.keys():
+            print(f"\n\t\tARR[{i}]:{self.treelist[i]}")
+        print("\n")     
     
     
     def fill_tree(self) -> None:
-        while(self.root<=self.size-1):
-            print(f"\n\t\tTREE:{self.treelist}")
-            print("\n\n\t\t 1 TO CHOOSE LEFT CHILD \t\t 2 TO CHOOSE RIGHT CHILD\n")
-            choice=int(input("\n\t\t WHICH CHID IS NEXT ROOT:"))
+        while(self.root*2<=self.size-1):
+            self.display()
+            print(f"\n\t\t 1 TO CHOOSE LEFT CHILD OF {self.root} \t\t 2 TO CHOOSE RIGHT CHILD OF {self.root}\n")
+            choice=int(input("\n\t\t WHICH CHILD IS NEXT ROOT:"))
             if choice == 1:
                 left_child=2*self.root+1
-                try:
-                    print(f"\n\t\tNOW ROOT AT {left_child} , LEFT CHILD OF {self.root}")
-                    self.root=left_child
-                    self.treelist.insert(self.root,int(input(f"\n\t\t VALUE OF NODE AT {self.root} :")))
-                except Exception:
-                    print(f"\n\t\tBREAKING AT INDEX {self.root}")
-                    break
+                print(f"\n\t\tNOW ROOT AT {left_child} , LEFT CHILD OF {self.root}")
+                self.root=left_child
+                self.treelist[self.root]=int(input(f"\n\t\t VALUE OF NODE AT {self.root} :"))
             elif choice == 2:
-                right_child=2*self.root+1
-                try:
-                    print(f"\n\t\tNOW ROOT AT {right_child} , LEFT CHILD OF {self.root}")
-                    self.root=right_child
-                    self.treelist.insert(self.root,int(input(f"\n\t\t VALUE OF NODE AT {self.root} :")))
-                except Exception:
-                    print(f"\n\t\tBREAKING AT INDEX {self.root}")
-                    break
+                right_child=2*self.root+2
+                print(f"\n\t\tNOW ROOT AT {right_child} , LEFT CHILD OF {self.root}")
+                self.root=right_child
+                self.treelist[self.root]=int(input(f"\n\t\t VALUE OF NODE AT {self.root} :"))
             else:
                 print("\n\t\t WRONG CHOICE")
                 break
         else:
             print(f"\n\t\tTREE FILLED")
-                      
-                            
+            self.display()  
 
-obj=TreeByList(5,5)
+obj=TreeByList(int(input("\n\t\t SIZE:")),int(input("\n\t\t VALUE AT INDEX 0:")))
 obj.fill_tree()
                 
 
