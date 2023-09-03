@@ -1,4 +1,5 @@
-# This Program shows how to make a tree using a linear continuous memory based DS - List(Representating array here)
+# This Program shows how to make a tree using a linear continuous memory based DS - Here we are taking Dict DS
+# Reason for that is if we choose list or set , even though after inserting in a specifc index, they got rearranges as ascending index order
 '''
 while Creating TREE using array ,  we have to remind that:
 1) Child Node of a node at location 'x' will be either in (2*x+1) or (2*x-1)
