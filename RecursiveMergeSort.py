@@ -38,4 +38,4 @@ class RecMergeSort:
 
 
 
-print(RecMergeSort().sortArray([5,1,3,2]))
+print(RecMergeSort().sortArray([-11, 100, 0, 5, -5, 9]))

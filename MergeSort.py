@@ -45,6 +45,6 @@ class MergeSort:
         
 
 
-obj=InsertionSort(length=int(input("\n\t\tLENGTH:")))
+obj=MergeSort(length=int(input("\n\t\tLENGTH:")))
 obj.fill_array()
 obj.Sort_arr()

@@ -22,7 +22,7 @@ class SelectionSort:
                     flag=1
             if flag==1:
                 self.arr[i],self.arr[min_index]=self.arr[min_index],self.arr[i]
-            # print(f"\n\t\tARR:{self.arr}") # Uncomment If you want to see the steps
+            print(f"\n\t\tARR:{self.arr}") # Uncomment If you want to see the steps
         print(f"\n\t\tAFTER SORTING,ARR:{self.arr}")
 
 

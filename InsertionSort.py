@@ -19,7 +19,7 @@ class InsertionSort:
             j=i-1
             while (j>=0 and self.arr[j]>key):
                 self.arr[j+1]=self.arr[j]
-                # print(f"\n\t\tARR:{self.arr}") # Uncomment If you want to see the steps
+                print(f"\n\t\tARR:{self.arr}") # Uncomment If you want to see the steps
                 j-=1
             self.arr[j+1]=key
         print(f"\n\t\tAFTER SORTING,ARR:{self.arr}")

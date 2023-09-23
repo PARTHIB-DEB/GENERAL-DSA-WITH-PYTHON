@@ -1,5 +1,8 @@
 # This file represents Double Linked List data structure
 # Double Linked List is basically a single linkedlist with bothway traversal
+'''
+NOT CORRECT
+'''
 
 class Node:  # Its a class which will create a new node object whenever called
     def __init__(self) -> None:
