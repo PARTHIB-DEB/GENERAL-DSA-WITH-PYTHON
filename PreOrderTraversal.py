@@ -20,14 +20,14 @@ class PreOrderTraversal:
         ----Here popping will not be done based on checking 'Null is there or not' condition, after simultaneous pushing, 
         we have to pop the root.left asusual and then root.right----
         '''
-        stack=[]
-        self.answer=[]
-        if not root:
+        stack=[] # Similar to Recursive Stack
+        self.answer=[] # Preorder stack
+        if not root: # as the auxiliary STACK must have the topmost ROOT before traversal, so this checking is done primarily
             return
         else:
             stack.append(root)
         while(len(stack)>0):
-            root=stack.pop()
+            root=stack.pop() # Now we are doing operations by taking the top-root from aux stack and pushing it in answer
             self.answer.append(root.val)
             if root.right:
                 stack.append(root.right)
