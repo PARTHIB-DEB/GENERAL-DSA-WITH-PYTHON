@@ -4,7 +4,6 @@
 # So we will create a STATIC Tree in a LinkedList Manner
 # InOrder Traversal : Left-Root-Right , specifically InOrder Traversal of a BST is a sorted array, because in BST root.left<root and root.right>root always
 
-
 class Node:  # Its a class which will create a new node object whenever called
     def __init__(self,left=None,right=None,val=None) -> None:
         self.val = val
