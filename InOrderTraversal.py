@@ -1,5 +1,4 @@
 # This File Consists of Inorder Traversal of a tree
-# For making of the tree we are taking List DS 
 # Tree is a diagramatic representation of hiererchial Non-linear DS  
 # So we will create a STATIC Tree in a LinkedList Manner
 # InOrder Traversal : Left-Root-Right , specifically InOrder Traversal of a BST is a sorted array, because in BST root.left<root and root.right>root always
@@ -12,20 +11,30 @@ class Node:  # Its a class which will create a new node object whenever called
         self.answer=[]
 
 class InOrderTraversal:
+    '''
+    InOrder says to traverse root.left-->root-->root.right , so as priority is starting from root.left
+    so we have to traverse everytime to the left side of the current root and make it root untill root.left != Null
+    that means everytime we are doing root=previous_root.left (root.left-->root)
+    after that when root.left is Null , there is no more new root , so we search for existing root's right
+    if existing root's right is not null , search for its left also , otherwise make root= current_root's ancestor (left ancestor)
+    ------Upto all of these making root , will be done by poping the top element of the auxiliary stack and putting it in answer stack-----
+    '''
     def Traversal(self,root:Node)->None:
-        stack=[]
-        self.answer=[]
+        stack=[] # Similar to Recursive Stack
+        self.answer=[] # Inorder Stack
         while(True):
-            if root:
+            if root: # If root is not Null just put it in STACK and traverse Leftwise (as LEFT-->R-->RIGHT)
                 stack.append(root)
                 root=root.left
             else:
-                if not stack:
+                if not stack: # STACK or auxuliary stack is empty means there is no root in tree , means empty tree
                     break
                 else:
-                    root=stack.pop()
+                    root=stack.pop() # Otherwise may be the new root (prev_root.left) is Null , so move to its rightside
                     self.answer.append(root.val)
                     root=root.right
+        
+        # return self.answer
     
     def display(self)->None:
         print("\n\t\tIN-ORDER STACK:",end=" ")
